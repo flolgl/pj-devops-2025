@@ -7,6 +7,6 @@ To build :
 - Run : `docker build -t go-pj:latest .`
 
 To run : 
-- After building, run : `docker run -p 8080:8080 go-pj:latest`
+- After building, run : `docker run -d -p 8080:8080 go-pj:latest`
 
 ## Q3
