@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     int status = sh(
-                        script: "curl -sLI -w '%{http_code}' http://\$(minikube ip):31080/whoami -o /dev/null",
+                        script: "curl -sLI -w '%{http_code}' http://\$(minikube ip):31081/whoami -o /dev/null",
                          returnStdout: true
                     )
 
