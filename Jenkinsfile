@@ -8,14 +8,7 @@ pipeline {
                 git branch: 'main', credentialsId: 'git_credentials', url :'https://github.com/flolgl/pj-devops-2025'
             }
         }
-        stage('Build docker image') {
-            steps {
-                script {
-                    docker.build('go-pj:latest')
-                }
-            }
-        }
-        stage('Start Minikube & Build Docker Image') {
+        stage('Start Minikube & build docker image') {
             steps {
                 script {
                     // Second line, used to transfer image to minikube, cf https://stackoverflow.com/questions/42564058/how-can-i-use-local-docker-images-with-minikube
