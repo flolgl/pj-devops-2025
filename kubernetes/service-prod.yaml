@@ -5,7 +5,7 @@ metadata:
   namespace: production
 spec:
   selector:
-    app: custom-go-app
+    app: go-pj
   ports:
     - protocol: TCP
       port: 8081

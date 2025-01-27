@@ -16,7 +16,7 @@ spec:
         app: go-pj
     spec:
       containers:
-        - name: go-pj-container
+        - name: go-pj
           image: go-pj:latest
           imagePullPolicy: Never
           ports:
