@@ -20,7 +20,7 @@ pipeline {
                 script {
                     // Second line, used to transfer image to minikube, cf https://stackoverflow.com/questions/42564058/how-can-i-use-local-docker-images-with-minikube
                     sh """
-                        minikube start --driver=docker
+                        minikube start --driver=docker --force
                         eval \$(minikube docker-env)
                         docker build -t go-pj:latest .
                     """
