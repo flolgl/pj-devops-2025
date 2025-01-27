@@ -29,7 +29,7 @@ pipeline {
                     // and then deploy
                     sh """
                         kubectl create -f kubernetes/namespace-dev.yaml
-                        kubectl apply -f kubernetes/deployment-dev.yaml
+                        kubectl apply -f kubernetes/deploy-dev.yaml
                         kubectl apply -f kubernetes/service-dev.yaml
                     """
                 }
@@ -58,7 +58,7 @@ pipeline {
                     // and then deploy
                     sh """
                         kubectl create -f kubernetes/namespace-prod.yaml
-                        kubectl apply -f kubernetes/deployment-prod.yaml
+                        kubectl apply -f kubernetes/deploy-prod.yaml
                         kubectl apply -f kubernetes/service-prod.yaml
                     """
                 }
