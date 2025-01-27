@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-pj-development-deployment
+  namespace: development
+  labels:
+    app: go-pj
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-pj
+  template:
+    metadata:
+      labels:
+        app: go-pj
+    spec:
+      containers:
+        - name: go-pj-container
+          image: go-pj:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
