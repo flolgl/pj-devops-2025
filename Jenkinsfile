@@ -42,5 +42,34 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                script {
+                    int status = sh(
+                        script: "curl -sLI -w '%{http_code}' http://$(minikube ip):31080/whoami -o /dev/null",
+                         returnStdout: true
+                    )
+
+                    if (status != 200) {
+                        error("Returned status code = $status when calling $url")
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to prod environment and create namespace') {
+            steps {
+                script {
+                    // Create namespace with yaml (if not exists, cf https://stackoverflow.com/questions/63135361/how-to-create-kubernetes-namespace-if-it-does-not-exist)
+                    // and then deploy
+                    sh """
+                        kubectl create -f kubernetes/namespace-prod.yaml
+                        kubectl apply -f kubernetes/deployment-prod.yaml
+                        kubectl apply -f kubernetes/service-prod.yaml
+                    """
+                }
+            }
+        }
     }
 }
