@@ -8,7 +8,7 @@ spec:
     app: custom-go-app
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
-      nodePort: 31080
+      port: 8081
+      targetPort: 8081
+      nodePort: 31081
   type: NodePort  # so each node redirects 31080 to 8080
