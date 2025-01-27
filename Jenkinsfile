@@ -47,12 +47,12 @@ pipeline {
             steps {
                 script {
                     int status = sh(
-                        script: "curl -sLI -w '%{http_code}' http://$(minikube ip):31080/whoami -o /dev/null",
+                        script: "curl -sLI -w '%{http_code}' http://\$(minikube ip):31080/whoami -o /dev/null",
                          returnStdout: true
                     )
 
                     if (status != 200) {
-                        error("Returned status code = $status when calling $url")
+                        error("Returned status code different than 200")
                     }
                 }
             }
