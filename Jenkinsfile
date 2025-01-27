@@ -28,7 +28,7 @@ pipeline {
                     // Create namespace with yaml (if not exists, cf https://stackoverflow.com/questions/63135361/how-to-create-kubernetes-namespace-if-it-does-not-exist)
                     // and then deploy
                     sh """
-                        kubectl create -f kubernetes/namespace-dev.yaml
+                        kubectl create -f kubernetes/namespace-dev.yaml || echo "namespace already exists"
                         kubectl apply -f kubernetes/deploy-dev.yaml
                         kubectl apply -f kubernetes/service-dev.yaml
                     """
@@ -57,7 +57,7 @@ pipeline {
                     // Create namespace with yaml (if not exists, cf https://stackoverflow.com/questions/63135361/how-to-create-kubernetes-namespace-if-it-does-not-exist)
                     // and then deploy
                     sh """
-                        kubectl create -f kubernetes/namespace-prod.yaml
+                        kubectl create -f kubernetes/namespace-prod.yaml || echo "namespace already exists"
                         kubectl apply -f kubernetes/deploy-prod.yaml
                         kubectl apply -f kubernetes/service-prod.yaml
                     """
