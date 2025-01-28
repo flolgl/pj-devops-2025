@@ -10,3 +10,7 @@ To run :
 - After building, run : `docker run -d -p 8080:8080 go-pj:latest`
 
 ## Q3
+In development environment:  
+![Part 1 Q3 Dev.PNG](img%2FPart%201%20Q3%20Dev.PNG)
+In production environment:
+![Part 1 Q3 Prod.PNG](img%2FPart%201%20Q3%20Prod.PNG)
