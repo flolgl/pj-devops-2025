@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Second line, used to transfer image to minikube, cf https://stackoverflow.com/questions/42564058/how-can-i-use-local-docker-images-with-minikube
                     sh """
-                        minikube start --driver=docker --force
+                        minikube start --driver=docker
                         eval \$(minikube docker-env)
                         docker build -t go-pj:latest .
                     """
@@ -39,12 +39,12 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    int status = sh(
+                    def status = sh(
                         script: "curl -sLI -w '%{http_code}' http://\$(minikube ip):31081/whoami -o /dev/null",
                         returnStdout: true
                     )
 
-                    if (status != 200) {
+                    if (status != '200') {
                         error("Returned status code different than 200")
                     }
                 }
