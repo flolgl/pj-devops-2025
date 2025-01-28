@@ -10,5 +10,5 @@ spec:
     - protocol: TCP
       port: 8081
       targetPort: 8081
-      nodePort: 31081
+      nodePort: 31082
   type: NodePort  # so each node redirects 31081 to 8081
